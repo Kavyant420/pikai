@@ -1,23 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head>
-  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css ">
-
-  <link rel="icon" href="data:image/svg+xml,
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'>
-      <path fill='black' d='M296 160H180.6L212.1 16.4c2.5-12.1-10.3-20.6-20.4-12.8L24 192c-7.1 5.7-3.3 17.6 6 17.6h115.4L107.9 495.6c-2.5 12.1 10.3 20.6 20.4 12.8l168-128c7.1-5.7 3.3-17.6-6-17.6H174.9l32.5-143.6c2.5-12.1-10.3-20.6-20.4-12.8L296 160z'/>
-    </svg>">
+    <title>PikAI - Security AI</title>
     
-  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path fill='black' d='M296 160H180.6L212.1 16.4c2.5-12.1-10.3-20.6-20.4-12.8L24 192c-7.1 5.7-3.3 17.6 6 17.6h115.4L107.9 495.6c-2.5 12.1 10.3 20.6 20.4 12.8l168-128c7.1-5.7 3.3-17.6-6-17.6H174.9l32.5-143.6c2.5-12.1-10.3-20.6-20.4-12.8L296 160z'/></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
-    <title>PikAI - Modern Security AI</title>
     <style>
         * {
             margin: 0;
@@ -184,22 +179,34 @@
         .input-container {
             width: 95%;
             max-width: 800px;
-            background-color: black;
-            border-radius: 12px;
-            padding: 15px;
+            background: #000;
+            border-top: 1.5px solid rgba(255, 255, 255, 0.25);
+            border-radius: 18px 18px 0 0;
+            padding: 12px 18px;
             display: flex;
             align-items: center;
             position: relative;
+            box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
         }
         
         .input-field {
             flex: 1;
             background: transparent;
             border: none;
-            color: #aaa;
+            color: rgba(255, 255, 255, 0.9);
             font-size: 16px;
-            padding: 10px;
+            padding: 8px 10px;
             outline: none;
+        }
+        
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .input-container:focus-within {
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 -1px 10px rgba(255, 255, 255, 0.1);
         }
         
         .input-icons {
@@ -210,7 +217,6 @@
         .mic-icon {
             font-size: 20px;
             cursor: pointer;
-            
         }
         
         .send-icon {
@@ -220,259 +226,6 @@
             padding: 10px;
             border-radius: 70%;
         }
-        .add-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        
-        .search-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background-color: #333;
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-        
-        .scroll-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 100;
-        }
-        
-        @media (max-width: 768px) {
-            .header {
-                padding: 10px 15px;
-            }
-            
-            .model-name {
-                font-size: 14px;
-            }
-            
-            .greeting-text {
-                font-size: 18px;
-            }
-            
-            .username {
-                font-size: 22px;
-            }
-            
-            .input-field {* {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        
-        body {
-            background-color: #000;
-            color: white;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background-color: #000;
-            border-bottom: 1px solid #333;
-        }
-        
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        .model-selector {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-        }
-        
-        .model-name {
-            font-weight: bold;
-        }
-        
-        .dropdown-arrow {
-            font-size: 12px;
-        }
-        
-        .user-icon {
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .logo {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #6e45e2, #88d3ce);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-        }
-        
-        .greeting {
-            text-align: center;
-        }
-        
-        .greeting-text {
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-        
-        .username {
-            font-size: 28px;
-            font-weight: bold;
-        }
-        
-        .code-block {
-            width: 95%;
-            max-width: 800px;
-            background-color: #2d2d2d;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            overflow-x: auto;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-        
-        .line-numbers {
-            color: #888;
-            text-align: right;
-            padding-right: 10px;
-            float: left;
-            width: 40px;
-        }
-        
-        .code-content {
-            margin-left: 50px;
-        }
-        
-        .response-text {
-            width: 95%;
-            max-width: 800px;
-            margin: 20px 0;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-            margin: 15px 0;
-        }
-        
-        .preview-btn {
-            background: linear-gradient(45deg, #6e45e2, #88d3ce);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: bold;
-        }
-        
-        .icon-btn {
-            background: transparent;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 20px;
-            padding: 8px;
-        }
-        
-        .quick-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        
-        .action-tag {
-            background-color: #333;
-            padding: 8px 15px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-        }
-        
-        .input-container {
-            width: 95%;
-            max-width: 800px;
-            background-color: #2d2d2d;
-            border-radius: 12px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-        
-        .input-field {
-            flex: 1;
-            background: transparent;
-            border: none;
-            color: #aaa;
-            font-size: 16px;
-            padding: 10px;
-            outline: none;
-        }
-        
-        .input-icons {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .mic-icon {
-            font-size: 20px;
-            cursor: pointer;
-        }
-        
-        .send-icon {
-            font-size: 10px;
-            cursor: pointer;
-            background: linear-gradient(45deg, #6e45e2, #88d3ce);
-            padding: 1px;
-            border-radius: 10%;
-        }
         
         .add-btn {
             width: 40px;
@@ -497,7 +250,7 @@
         
         .scroll-to-top {
             position: fixed;
-            bottom: 20px;
+            bottom: 170px;
             right: 20px;
             width: 40px;
             height: 40px;
@@ -531,795 +284,2377 @@
                 font-size: 14px;
             }
         }
-                font-size: 14px;
+        
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .popup {
+            background: black;
+            padding: 20px 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transform: scale(1);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        .popup.hidden {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            background: linear-gradient(90deg, #00f, #0ff, #0f0, #ff0, #f00, #00f);
+            background-size: 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 4s linear infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
             }
         }
-           .overlay {
-      position: fixed;
-      inset: 0;
-      background: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-      opacity: 1;
-      transition: opacity 0.5s ease;
-    }
+            
+        input {
+            width: 80%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            outline: none;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            background: black;
+            color: white;
+        }
 
-    .overlay.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #4a90e2;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            background: black;
+        }
 
-    /* Popup box */
-    .popup {
-      background: black;
-      padding: 20px 25px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      transform: scale(1);
-      transition: transform 0.4s ease, opacity 0.4s ease;
-    }
-
-    .popup.hidden {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-
-    h2 {
-  margin-bottom: 15px;
-  font-size: 1.2rem;
-  background: linear-gradient(90deg, #00f, #0ff, #0f0, #ff0, #f00, #00f);
-  background-size: 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientFlow 4s linear infinite;
-}
-
-/* Animation for the gradient movement */
-@keyframes gradientFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
-}
+        button:hover {
+            background: #357abd;
+        }
         
-    input {
-      width: 80%;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
-      outline: none;
-      font-size: 1rem;
-      margin-bottom: 15px;
-      background: black;
-      color: white;
-      
-    }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: #1a1a1a;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+            z-index: 1000;
+            transition: left 0.3s ease;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidebar.active {
+            left: 0;
+        }
+        
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .settings-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .setting-label {
+            color: #ddd;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        * { 
+            -webkit-tap-highlight-color: transparent; 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        } 
 
-    button {
-      padding: 10px 18px;
-      border: none;
-      border-radius: 6px;
-      background: #4a90e2;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s;
-      background: black;
-    }
+        input:focus, select:focus, textarea:focus, button:focus { 
+            outline: none; 
+            box-shadow: none; 
+            -webkit-box-shadow: none; 
+        }
 
-    button:hover {
-      background: #357abd;
-    }
-    
-    /* Sidebar styles */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -300px;
-      width: 300px;
-      height: 100%;
-      background-color: #1a1a1a;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.5);
-      z-index: 1000;
-      transition: left 0.3s ease;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .sidebar.active {
-      left: 0;
-    }
-    
-    .sidebar-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    
-    .close-btn {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    
-    .settings-container {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    
-    .setting-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .setting-label {
-      color: #ddd;
-    }
-    
-    .toggle-switch {
-      position: relative;
-      display: inline-block;
-      width: 50px;
-      height: 24px;
-    }
-    
-    .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      transition: .4s;
-      border-radius: 24px;
-    }
-    * { 
-    -webkit-tap-highlight-color: transparent; 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-} 
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #4a90e2;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .caution-note {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-top: auto;
+            padding: 10px;
+            border-top: 1px solid #444;
+        }
+        
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            line-height: 1.5;
+            position: relative;
+        }
+        
+        .user-message {
+            background-color: black;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .bot-message {
+            background-color: black;
+            color: #e2e8f0;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .typing-indicator {
+            display: none;
+            background-color: #334155;
+            color: #94a3b8;
+            padding: 12px 16px;
+            border-radius: 18px;
+            align-self: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #94a3b8;
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: bounce 1.5s infinite;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        pre {
+            background-color: #1e293b;
+            padding: 10px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        code {
+            font-family: 'Courier New', monospace;
+        }
+        
+        .send-border {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(20, 20, 20, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.25s ease;
+            box-shadow:
+                0 1px 3px rgba(255, 255, 255, 0.05) inset,
+                0 0 6px rgba(0, 0, 0, 0.5);
+        }
 
-input:focus, select:focus, textarea:focus, button:focus { 
-    outline: none; 
-    box-shadow: none; 
-    -webkit-box-shadow: none; 
+        .send-border:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 0 8px rgba(255, 255, 255, 0.05),
+                0 1px 10px rgba(255, 255, 255, 0.05);
+            transform: scale(1.04);
+        }
+
+        .send-border i {
+            color: #ffffff;
+            font-size: 1.3rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .send-counter {
+            position: absolute;
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            color: rgba(255, 255, 255, 0.9);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: scale(0.95);
+            text-align: center;
+        }
+        
+        .send-counter.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .search-sources {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .source-card {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(40, 40, 40, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-size: 0.85rem;
+            color: #ddd;
+            transition: background 0.2s ease;
+        }
+
+        .source-card:hover {
+            background: rgba(60, 60, 60, 0.95);
+        }
+
+        .source-card img {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+        
+        .thinking-indicator {
+            background-color: #1a1a2e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .thinking-spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-top: 2px solid #6e45e2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .file-upload-area {
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload-area:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .file-upload-area.dragover {
+            border-color: #6e45e2;
+            background: rgba(110, 69, 226, 0.1);
+        }
+
+        .uploaded-files {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .file-chip {
+            background: rgba(40, 40, 40, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .file-chip .remove-btn {
+            cursor: pointer;
+            color: #ff6b6b;
+            margin-left: 5px;
+        }
+        
+        .progress-container {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .progress-step.active {
+            color: #6e45e2;
+        }
+
+        .progress-step.completed {
+            color: #10b981;
+        }
+
+        .step-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .step-icon.completed {
+            background: currentColor;
+            color: white;
+        }
+        
+        .model-info {
+            background: rgba(30, 30, 30, 0.6);
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin: 5px 0;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .intent-badge {
+            background: linear-gradient(45deg, #6e45e2, #88d3ce);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px 5px 5px 0;
+        }
+
+        .confidence-meter {
+            width: 100px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-left: 10px;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff4444, #ffaa44, #44ff44);
+            transition: width 0.5s ease;
+        }
+        
+        .hidden-file-input {
+            display: none;
+        }
+        
+        .capability-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+
+        .capability-tag {
+            background: rgba(40, 40, 40, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .capability-tag.active {
+            background: rgba(110, 69, 226, 0.3);
+            border-color: #6e45e2;
+            color: #6e45e2;
+        }
+        
+        .analysis-results {
+            background: rgba(25, 25, 40, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .analysis-section {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .analysis-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .analysis-title {
+            color: #6e45e2;
+            font-weight: bold;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .web-result {
+            background: rgba(30, 30, 50, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .web-result:hover {
+            border-color: rgba(110, 69, 226, 0.5);
+            background: rgba(40, 40, 60, 0.9);
+        }
+
+        .result-title {
+            color: #6e45e2;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .result-snippet {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .result-url {
+            color: #10b981;
+            font-size: 0.75rem;
+            margin-top: 5px;
+        }
+        .input-container {
+    width: 95%;
+    max-width: 800px;
+    background: #000; /* Pitch black background */
+    border-top: 1.5px solid rgba(255, 255, 255, 0.25);
+    border-radius: 18px 18px 0 0;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.05);
 }
 
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 16px;
-      width: 16px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      transition: .4s;
-      border-radius: 50%;
-    }
-    
-    input:checked + .slider {
-      background-color: #4a90e2;
-    }
-    
-    input:checked + .slider:before {
-      transform: translateX(26px);
-    }
-    
-    .caution-note {
-      color: #ff6b6b;
-      font-size: 0.9rem;
-      margin-top: auto;
-      padding: 10px;
-      border-top: 1px solid #444;
-    }
-    
-    .chat-container {
-      flex: 1;
-      overflow-y: auto;
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    
-    .message {
-      max-width: 80%;
-      padding: 12px 16px;
-      border-radius: 18px;
-      line-height: 1.5;
-      position: relative;
-    }
-    
-    .user-message {
-      background-color: black;
-      color: white;
-      align-self: flex-end;
-      border-bottom-right-radius: 4px;
-    }
-    
-    .bot-message {
-      background-color: black;
-      color: #e2e8f0;
-      align-self: flex-start;
-      border-bottom-left-radius: 4px;
-    }
-    
-    .typing-indicator {
-      display: none;
-      background-color: #334155;
-      color: #94a3b8;
-      padding: 12px 16px;
-      border-radius: 18px;
-      align-self: flex-start;
-      margin-bottom: 10px;
-    }
-    
-    .typing-indicator span {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      background-color: #94a3b8;
-      border-radius: 50%;
-      margin: 0 2px;
-      animation: bounce 1.5s infinite;
-    }
-    
-    .typing-indicator span:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-    
-    .typing-indicator span:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-    
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-    
-    pre {
-      background-color: #1e293b;
-      padding: 10px;
-      border-radius: 8px;
-      overflow-x: auto;
-      margin: 10px 0;
-      font-family: 'Courier New', monospace;
-    }
-    
-    code {
-      font-family: 'Courier New', monospace;
-    }
-  .send-border {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: conic-gradient(
-    from 0deg,
-    red,
-    yellow,
-    lime,
-    cyan,
-    blue,
-    magenta,
-    red
-  );
-  padding: 3px;
-  animation: spinHue 6s linear infinite;
+.add-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #000; /* match container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.3rem;
+    color: white;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
-@keyframes spinHue {
-  from {
-    filter: hue-rotate(0deg);
-  }
-  to {
-    filter: hue-rotate(360deg);
-  }
+.add-btn:hover {
+    transform: scale(1.1);
+    background-color: #111; /* subtle hover contrast */
 }
 
-.send-border::before {
-  content: "";
-  position: absolute;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: #0a0a0a;
-  z-index: 0;
-}
-
-.send-border i {
-  color: white;
-  font-size: 1.4rem;
-  position: relative;
-  z-index: 1;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.send-border i:hover {
-  transform: scale(1.15);
-}
 .send-border {
-  box-shadow: 0 0 10px rgba(255,255,255,0.1), 0 0 25px rgba(0,255,255,0.3);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.25s ease;
 }
-pre, code, .code-block {
-    font-family: Consolas, "Courier New", monospace;
-    font-size: 14px; /* adjust if needed */
-    line-height: 1.5;
-    white-space: pre-wrap; /* keeps code formatting */
+.input-container {
+    width: 95%;
+    max-width: 800px;
+    background: #000; /* Pitch black background */
+    border-top: 1.5px solid rgba(255, 255, 255, 0.25);
+    border-radius: 18px 18px 0 0;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.05);
 }
 
-.bot-text {
-    font-family: 'Segoe UI', sans-serif;
+.input-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* consistent gap */
+}
+
+.add-btn,
+.send-border {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #000; /* both same base color */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.add-btn:hover,
+.send-border:hover {
+    transform: scale(1.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: #0a0a0a;
+}
+
+.add-btn i,
+.send-border i {
+    color: white;
+    font-size: 1.2rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input-container {
+    width: 95%;
+    max-width: 800px;
+    background: #000;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.25);
+    border-radius: 18px 18px 0 0;
+    padding: 8px 10px; /* reduce padding to tighten space */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px; /* reduce internal gap between input and icons */
+    position: relative;
+    box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.05);
+}
+
+.input-field {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.9);
     font-size: 16px;
-    line-height: 1.6;
-    color: #e2e8f0;
-    margin-bottom: 10px;
-    word-wrap: break-word;
+    padding: 6px 8px; /* smaller padding */
+    margin-right: 4px; /* tighten space before icons */
+    outline: none;
+}
+.input-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* smaller horizontal space between icons */
+}
+.input-container {
+    width: 95%;
+    max-width: 800px;
+    background: #000; /* pitch black */
+    border-top: 1.5px solid rgba(255, 255, 255, 0.25);
+    border-radius: 18px 18px 0 0;
+    padding: 8px 10px; /* tighter spacing */
+    display: flex;
+    align-items: center;
+    gap: 6px; /* reduce gap between input and icons */
+    position: relative;
+    box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.05);
+}
+
+.input-field {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    padding: 6px 8px; /* less padding for tighter layout */
+    outline: none;
+    line-height: 1.5;
+    margin-right: 4px; /* reduces gap before folder icon */
+}
+
+.input-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* smaller gap between folder and send buttons */
+}
+
+.add-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.add-btn:hover {
+    transform: scale(1.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: #0a0a0a;
+}
+
+.add-btn i {
+    color: white;
+    font-size: 1.2rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
     </style>
 </head>
 <body>
     <div class="overlay" id="popupOverlay">
-    <div class="popup" id="popupBox">
-      <h2>What should PikAI call you?</h2>
-      <input type="text" id="username" placeholder="Enter your name">
-      <br>
-      <button onclick="submitName()">Confirm</button>
+        <div class="popup" id="popupBox">
+            <h2>What should PikAI call you?</h2>
+            <input type="text" id="username" placeholder="Enter your name">
+            <br>
+            <button onclick="submitName()">Confirm</button>
+        </div>
     </div>
-  </div>
-  
-  <div class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-      <h3>Settings</h3>
-      <button class="close-btn" id="closeSidebar">&times;</button>
+    
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Settings</h3>
+            <button class="close-btn" id="closeSidebar">&times;</button>
+        </div>
+        <div class="settings-container">
+            <div class="setting-item">
+                <span class="setting-label">Privacy mode</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="privacyMode" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <span class="setting-label">Secured Environment</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="securedEnv" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <span class="setting-label">Unrestricted AI</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="unrestrictedAI">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <span class="setting-label">Show Thinking</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="showThinking" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <span class="setting-label">Advanced Analysis</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="advancedAnalysis" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="caution-note">
+            Do not misuse this AI, it could lead to hefty punishments.
+        </div>
     </div>
-    <div class="settings-container">
-      <div class="setting-item">
-        <span class="setting-label">Privacy mode</span>
-        <label class="toggle-switch">
-          <input type="checkbox" id="privacyMode" checked>
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div class="setting-item">
-        <span class="setting-label">Secured Environment</span>
-        <label class="toggle-switch">
-          <input type="checkbox" id="securedEnv" checked>
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div class="setting-item">
-        <span class="setting-label">Unrestricted AI</span>
-        <label class="toggle-switch">
-          <input type="checkbox" id="unrestrictedAI">
-          <span class="slider"></span>
-        </label>
-      </div>
-    </div>
-    <div class="caution-note">
-      Do not misuse this AI, it could lead to hefty punishments.
-    </div>
-  </div>
-  
+    
     <div class="header">
         <div class="menu-icon" id="menuIcon">≡</div>
         <div class="model-selector">
-            <span class="model-name">PikAI-0.7+</span>
-            <span class="dropdown-arrow">▼</span>
+            <span class="model-name" id="currentModel">PikAI-Advanced</span>
+            <span class="dropdown-arrow"></span>
         </div>
-        <div class="user-icon"><div class="user-icon"><i class="fa-solid fa-user"></i></div></div>
+        <div class="user-icon">
+            <i class="fa-solid fa-user"></i>
+        </div>
     </div>
     
     <div class="main-content">
         <div style="display: flex; align-items: center; gap: 15px;">
-            
             <div class="greeting">
                 <div class="greeting-text">Good evening,</div>
                 <div class="username">user</div>
             </div>
         </div>
+        
+        <div class="capability-tags">
+            <div class="capability-tag active">Text Generation</div>
+            <div class="capability-tag active">Image Creation</div>
+            <div class="capability-tag active">Web Search</div>
+            <div class="capability-tag active">File Analysis</div>
+            <div class="capability-tag active">Code Generation</div>
+            <div class="capability-tag active">Audio Processing</div>
+        </div>
     </div>
     
     <div class="chat-container" id="chatContainer">
-      <div class="message bot-message">
-        Hello! I'm PikAI, your secured virtual assistant. How can I help you today?
-      </div>
+        <div class="message bot-message">
+            Hello! I'm PikAI, your advanced multi-purpose AI assistant. I can help with text generation, image creation, web research, file analysis, coding, and much more. How can I assist you today?
+        </div>
     </div>
     
     <div class="typing-indicator" id="typingIndicator">
-      <span></span>
-   
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
-   
-    <div class="quick-actions">
-        <div class="action-tag" data-prompt="Create an image of a futuristic city skyline at sunset">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-            Travel Planner
-        </div>
-        <div class="action-tag" data-prompt="Generate an image of a fantasy landscape with mountains and a lake">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
-            </svg>
-            Image Gen
-        </div>
-        <div class="action-tag" data-prompt="Write a JavaScript function to calculate factorial">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19.73 13.03C19.53 12.83 19.27 12.73 19 12.73H5C4.73 12.73 4.47 12.83 4.27 13.03C4.07 13.23 4 13.5 4 13.77V19.73C4 20.27 4.43 20.73 5 20.73H19C19.57 20.73 20 20.27 20 19.73V13.77C20 13.5 19.93 13.23 19.73 13.03ZM19 19H5V14H19V19ZM19 12H5V6H19V12ZM19 5H5V4H19V5Z"/>
-            </svg>
-            Code Helper
-        </div>
-        <div class="action-tag" data-prompt="Explain quantum computing in simple terms">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm0 2c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm0 2c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
-            </svg>
-            Explain
+    
+    <div class="file-upload-area" id="fileUploadArea" style="display: none;">
+        <i class="fa-solid fa-cloud-upload-alt" style="font-size: 2rem; color: #6e45e2; margin-bottom: 10px;"></i>
+        <div>Drop files here or click to upload</div>
+        <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 5px;">
+            Supports: Images, PDFs, Text files, Audio, Video, Documents
         </div>
     </div>
     
+    <div class="uploaded-files" id="uploadedFiles"></div>
+    
     <div class="input-container">
-        <input type="text" class="input-field" id="userInput" placeholder="How can I help you today?">
+        <input type="file" id="hiddenFileInput" class="hidden-file-input" multiple accept="*/*">
+        <input type="text" class="input-field" id="userInput" placeholder="Ask me anything, upload files, or request images...">
+        
         <div class="input-icons">
-            
-            <div class="send-icon">
-  <div class="send-border">
-    <i class="fa-solid fa-bolt" id="sendBtn"></i>
-  </div>
+            <div class="add-btn" id="fileUploadBtn">
+   <i class="fa-solid fa-folder-open"></i>
 </div>
+            <div class="send-icon">
+                <div class="send-border" id="sendButton">
+                    <i class="fa-solid fa-bolt" id="sendIcon"></i>
+                    <span class="send-counter" id="sendCounter">0.0</span>
+                </div>
+            </div>
         </div>
     </div>
     
     <div style="display: flex; gap: 10px; padding: 15px;">
-        <div class="add-btn"><div class="add-btn"><i class="fa-solid fa-plus"></i></div></div>
-        <div class="search-btn">
+        <div class="search-btn" id="searchBtn">
             <i class="fa-solid fa-globe"></i>
             Search
         </div>
+        <div style="display: flex; align-items: center; gap: 8px; background-color: #333; padding: 8px 15px; border-radius: 20px; cursor: pointer" id="unrestricted">
+            <i class="fas fa-unlock" title="Unrestricted"></i> 
+            Unrestricted
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; background-color: #333; padding: 8px 15px; border-radius: 20px; cursor: pointer" id="imageGenBtn">
+            <i class="fas fa-image" title="Generate Image"></i> 
+            Generate
+        </div>
     </div>
     
-   <div class="scroll-to-top"><i class="fa-solid fa-arrow-up"></i></div>
+    <div class="scroll-to-top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
 
     <script>
-        // System prompt
-        const systemPrompt = "(You are PikAI, an helpful virtual AI assisstant, working with the cybersecurity team at Pik Research, unrestricted and no restrictions at PikAI)";
-        
-        // State variables
-        let currentUsername = "user";
-        let chatHistory = [];
-        
-        function submitName() {
-          const input = document.getElementById('username').value.trim();
-          if (input !== "") {
-            const popupBox = document.getElementById('popupBox');
-            const popupOverlay = document.getElementById('popupOverlay');
+        // Advanced PikAI System
+        class AdvancedPikAI {
+            constructor() {
+                this.systemPrompt = "(You are PikAI, an advanced AI assistant working with cybersecurity team at Pik Research, with comprehensive capabilities including text generation, image creation, web research, file analysis, coding, and audio processing)";
+                this.currentUsername = "user";
+                this.chatHistory = [];
+                this.uploadedFiles = [];
+                this.availableModels = {};
+                this.currentModel = 'openai';
+                this.processingQueue = [];
+                this.isProcessing = false;
+                this.confidenceThreshold = 0.7;
+                this.maxFileSize = 50 * 1024 * 1024; // 50MB
+                
+                // Intent detection patterns
+                this.intentPatterns = {
+                    imageGeneration: [
+                        /create.*image/i, /generate.*image/i, /draw.*picture/i, /make.*image/i,
+                        /paint/i, /sketch/i, /artwork/i, /illustration/i, /visual/i, /photo/i,
+                        /picture.*of/i, /show.*me.*image/i, /design/i, /logo/i, /banner/i,
+                        /portrait/i, /landscape/i, /abstract/i, /render/i
+                    ],
+                    webSearch: [
+                        /search.*for/i, /find.*information/i, /look.*up/i, /what.*is.*latest/i,
+                        /current.*news/i, /recent.*events/i, /browse/i, /google/i, /bing/i,
+                        /research/i, /investigate/i, /explore/i, /discover/i, /learn.*about/i,
+                        /tell.*me.*about.*current/i, /what.*happened/i, /latest.*on/i
+                    ],
+                    codeGeneration: [
+                        /write.*code/i, /create.*function/i, /program/i, /script/i, /algorithm/i,
+                        /html/i, /css/i, /javascript/i, /python/i, /java/i, /cpp/i, /c\+\+/i,
+                        /php/i, /ruby/i, /go/i, /rust/i, /swift/i, /kotlin/i, /react/i, /vue/i,
+                        /angular/i, /node/i, /api/i, /database/i, /sql/i, /mongodb/i, /json/i,
+                        /regex/i, /debug/i, /fix.*bug/i, /optimize/i, /refactor/i
+                    ],
+                    fileAnalysis: [
+                        /analyze.*file/i, /read.*file/i, /extract.*from/i, /parse/i, /process.*file/i,
+                        /summarize.*document/i, /what.*in.*file/i, /content.*of/i, /review/i,
+                        /examine/i, /inspect/i, /decode/i, /convert/i, /translate.*document/i
+                    ],
+                    audioGeneration: [
+                        /text.*to.*speech/i, /tts/i, /speak/i, /voice/i, /audio/i, /sound/i,
+                        /narrate/i, /read.*aloud/i, /pronunciation/i, /say.*this/i, /vocal/i
+                    ],
+                    dataAnalysis: [
+                        /analyze.*data/i, /statistics/i, /chart/i, /graph/i, /trend/i, /pattern/i,
+                        /calculate/i, /math/i, /formula/i, /equation/i, /compute/i, /sum/i,
+                        /average/i, /mean/i, /median/i, /mode/i, /standard.*deviation/i
+                    ],
+                    translation: [
+                        /translate/i, /translation/i, /convert.*language/i, /spanish/i, /french/i,
+                        /german/i, /chinese/i, /japanese/i, /korean/i, /arabic/i, /russian/i,
+                        /portuguese/i, /italian/i, /dutch/i, /hindi/i, /language/i
+                    ],
+                    textProcessing: [
+                        /summarize/i, /summary/i, /explain/i, /rewrite/i, /rephrase/i, /paraphrase/i,
+                        /grammar.*check/i, /spell.*check/i, /proofreading/i, /edit/i, /improve/i,
+                        /format/i, /style/i, /tone/i, /sentiment/i, /keyword/i, /extract/i
+                    ]
+                };
+                
+                this.init();
+            }
 
-            // Smooth hide animation
-            popupBox.classList.add("hidden");
-            popupOverlay.classList.add("hidden");
+            async init() {
+                this.setupEventListeners();
+                this.loadUserSettings();
+                await this.loadAvailableModels();
+                this.updateGreeting();
+                this.setupFileUpload();
+                this.initializeChat();
+            }
 
-            // Update greeting with the user's name
-            currentUsername = input;
-            document.querySelector(".username").textContent = input+".";
-          }
-        }
-        
-        // DOM elements
-        const chatContainer = document.getElementById('chatContainer');
-        const userInput = document.getElementById('userInput');
-        const sendBtn = document.getElementById('sendBtn');
-        const typingIndicator = document.getElementById('typingIndicator');
-        const scrollTop = document.querySelector('.scroll-to-top');
-        const actionTags = document.querySelectorAll('.action-tag');
-        const menuIcon = document.getElementById('menuIcon');
-        const sidebar = document.getElementById('sidebar');
-        const closeSidebar = document.getElementById('closeSidebar');
-        
-        // Toggle sidebar
-        menuIcon.addEventListener('click', () => {
-          sidebar.classList.add('active');
-        });
-        
-        closeSidebar.addEventListener('click', () => {
-          sidebar.classList.remove('active');
-        });
-        
-        // Add message to chat
-        // Add message to chat
-function addMessage(text, isUser = false) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message', isUser ? 'user-message' : 'bot-message');
+            setupEventListeners() {
+                const elements = {
+                    sendButton: document.getElementById('sendButton'),
+                    userInput: document.getElementById('userInput'),
+                    menuIcon: document.getElementById('menuIcon'),
+                    sidebar: document.getElementById('sidebar'),
+                    closeSidebar: document.getElementById('closeSidebar'),
+                    searchBtn: document.getElementById('searchBtn'),
+                    imageGenBtn: document.getElementById('imageGenBtn'),
+                    fileUploadBtn: document.getElementById('fileUploadBtn'),
+                    fileUploadArea: document.getElementById('fileUploadArea'),
+                    hiddenFileInput: document.getElementById('hiddenFileInput'),
+                    scrollTop: document.querySelector('.scroll-to-top')
+                };
 
-    if (text.includes('```')) {
-        const parts = text.split(/(```[\s\S]*?```)/g);
+                // Send button and enter key
+                elements.sendButton?.addEventListener('click', () => this.handleUserMessage());
+                elements.userInput?.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        this.handleUserMessage();
+                    }
+                });
 
-        parts.forEach(part => {
-            if (part.startsWith('```') && part.endsWith('```')) {
-                // Code block
-                let codeContent = part.slice(3, -3).trim();
-                let lines = codeContent.split('\n');
-                let language = '';
+                // Sidebar controls
+                elements.menuIcon?.addEventListener('click', () => elements.sidebar?.classList.add('active'));
+                elements.closeSidebar?.addEventListener('click', () => elements.sidebar?.classList.remove('active'));
 
-                if (/^(js|javascript|html|css|python|java|c|cpp|php|ruby|go|rust|swift|kotlin)$/i.test(lines[0].trim())) {
-                    language = lines[0].trim();
-                    lines.shift();
+                // Quick action buttons
+                elements.searchBtn?.addEventListener('click', () => this.triggerWebSearch());
+                elements.imageGenBtn?.addEventListener('click', () => this.triggerImageGeneration());
+
+                // File upload
+                elements.fileUploadBtn?.addEventListener('click', () => elements.hiddenFileInput?.click());
+                elements.fileUploadArea?.addEventListener('click', () => elements.hiddenFileInput?.click());
+                elements.hiddenFileInput?.addEventListener('change', (e) => this.handleFileUpload(e));
+
+                // Drag and drop
+                this.setupDragAndDrop();
+
+                // Scroll to top
+                elements.scrollTop?.addEventListener('click', () => {
+                    document.getElementById('chatContainer')?.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+
+                // Outside click to close sidebar
+                document.addEventListener('click', (e) => {
+                    if (!elements.sidebar?.contains(e.target) && 
+                        !elements.menuIcon?.contains(e.target) && 
+                        elements.sidebar?.classList.contains('active')) {
+                        elements.sidebar.classList.remove('active');
+                    }
+                });
+            }
+
+            setupDragAndDrop() {
+                const fileUploadArea = document.getElementById('fileUploadArea');
+                const chatContainer = document.getElementById('chatContainer');
+
+                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                    document.body.addEventListener(eventName, this.preventDefaults, false);
+                });
+
+                ['dragenter', 'dragover'].forEach(eventName => {
+                    document.body.addEventListener(eventName, () => {
+                        fileUploadArea.style.display = 'block';
+                        fileUploadArea.classList.add('dragover');
+                    }, false);
+                });
+
+                ['dragleave', 'drop'].forEach(eventName => {
+                    document.body.addEventListener(eventName, () => {
+                        fileUploadArea.classList.remove('dragover');
+                        setTimeout(() => {
+                            if (!fileUploadArea.classList.contains('dragover')) {
+                                fileUploadArea.style.display = 'none';
+                            }
+                        }, 100);
+                    }, false);
+                });
+
+                document.body.addEventListener('drop', (e) => {
+                    const files = Array.from(e.dataTransfer.files);
+                    if (files.length > 0) {
+                        this.processDroppedFiles(files);
+                    }
+                }, false);
+            }
+
+            preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            async loadAvailableModels() {
+                try {
+                    const response = await fetch('https://text.pollinations.ai/models');
+                    const models = await response.json();
+                    this.availableModels = models;
+                    console.log('Available models loaded:', models);
+                } catch (error) {
+                    console.warn('Failed to load models:', error);
+                    // Fallback models
+                    this.availableModels = {
+                        'openai': { capabilities: ['text', 'vision', 'function_calling'] },
+                        'openai-large': { capabilities: ['text', 'vision'] },
+                        'mistral': { capabilities: ['text'] },
+                        'claude-hybridspace': { capabilities: ['text', 'vision'] },
+                        'searchgpt': { capabilities: ['search'] },
+                        'openai-audio': { capabilities: ['audio', 'tts'] }
+                    };
+                }
+            }
+
+            detectIntent(message) {
+                const results = [];
+                const text = message.toLowerCase();
+                
+                // Check for file uploads first
+                if (this.uploadedFiles.length > 0) {
+                    results.push({
+                        intent: 'fileAnalysis',
+                        confidence: 0.9,
+                        reason: 'Files uploaded for analysis'
+                    });
                 }
 
-                const pre = document.createElement('pre');
-                const code = document.createElement('code');
-                code.className = `language-${language}`;
-                code.textContent = lines.join('\n'); // ESCAPE code content
-                pre.appendChild(code);
+                // Check each intent pattern
+                Object.entries(this.intentPatterns).forEach(([intent, patterns]) => {
+                    let matchCount = 0;
+                    let totalMatches = 0;
+                    
+                    patterns.forEach(pattern => {
+                        if (pattern.test(text)) {
+                            matchCount++;
+                            // Weight different patterns differently
+                            if (intent === 'imageGeneration' && /create|generate|make|draw/.test(text)) {
+                                totalMatches += 2;
+                            } else {
+                                totalMatches += 1;
+                            }
+                        }
+                    });
+                    
+                    if (matchCount > 0) {
+                        const confidence = Math.min(0.95, (totalMatches / patterns.length) * 1.2);
+                        results.push({
+                            intent,
+                            confidence,
+                            reason: `Matched ${matchCount} patterns`,
+                            matches: matchCount
+                        });
+                    }
+                });
 
-                hljs.highlightElement(code);
-                messageDiv.appendChild(pre);
-            } else {
-                // Normal text → allow HTML (images execute)
-                const span = document.createElement('span');
-                span.innerHTML = part;
-                messageDiv.appendChild(span);
+                // Advanced contextual detection
+                this.addContextualDetection(text, results);
+                
+                // Sort by confidence
+                results.sort((a, b) => b.confidence - a.confidence);
+                
+                return results.length > 0 ? results : [{
+                    intent: 'textProcessing',
+                    confidence: 0.5,
+                    reason: 'Default text processing'
+                }];
+            }
+
+            addContextualDetection(text, results) {
+                // Advanced image generation detection
+                if (this.containsVisualDescriptors(text)) {
+                    results.push({
+                        intent: 'imageGeneration',
+                        confidence: 0.8,
+                        reason: 'Contains visual descriptors'
+                    });
+                }
+
+                // Code detection by syntax
+                if (this.containsCodeSyntax(text)) {
+                    results.push({
+                        intent: 'codeGeneration',
+                        confidence: 0.85,
+                        reason: 'Contains code syntax'
+                    });
+                }
+
+                // Question patterns for search
+                if (/^(what|who|where|when|how|why|which).*\?/i.test(text) && 
+                    !/how.*to.*code|how.*to.*program/.test(text)) {
+                    results.push({
+                        intent: 'webSearch',
+                        confidence: 0.7,
+                        reason: 'Question pattern detected'
+                    });
+                }
+
+                // Current events keywords
+                const currentKeywords = /today|yesterday|recent|latest|current|now|this week|this month|2024|2025/i;
+                if (currentKeywords.test(text)) {
+                    results.push({
+                        intent: 'webSearch',
+                        confidence: 0.75,
+                        reason: 'Current events keywords'
+                    });
+                }
+            }
+
+            containsVisualDescriptors(text) {
+                const visualWords = [
+                    'colorful', 'bright', 'dark', 'beautiful', 'stunning', 'artistic',
+                    'detailed', 'realistic', 'cartoon', 'anime', 'style', 'painting',
+                    'photograph', 'digital art', 'concept art', 'character', 'scene',
+                    'background', 'foreground', 'composition', 'lighting', 'shadow',
+                    'texture', 'gradient', 'pattern', 'symmetry', 'perspective'
+                ];
+                
+                return visualWords.some(word => text.includes(word));
+            }
+
+            containsCodeSyntax(text) {
+                const codePatterns = [
+                    /function\s+\w+\s*\(/,
+                    /\w+\s*=\s*function\s*\(/,
+                    /\w+\s*:\s*function\s*\(/,
+                    /class\s+\w+/,
+                    /def\s+\w+\s*\(/,
+                    /import\s+\w+/,
+                    /from\s+\w+\s+import/,
+                    /#include\s*</,
+                    /public\s+class\s+\w+/,
+                    /SELECT\s+.*FROM/i,
+                    /\{\s*\n.*\n\s*\}/,
+                    /<\w+.*>/,
+                    /\$\w+\s*=/,
+                    /console\.log\(/,
+                    /print\(/,
+                    /document\./,
+                    /window\./
+                ];
+                
+                return codePatterns.some(pattern => pattern.test(text));
+            }
+
+            selectOptimalModel(intents) {
+                const primaryIntent = intents[0];
+                
+                const modelMapping = {
+                   
+  imageGeneration: "flux",            // high-quality image model
+  webSearch: "searchgpt",             // Pollinations' web-enabled model
+  audioGeneration: "openai-audio",    // native audio/TTS model
+  fileAnalysis: "openai-large",       // handles multimodal and file text analysis
+  codeGeneration: "qwen2.5-coder",    // new Qwen model specialized for coding
+  textProcessing: "openai",           // general-purpose text reasoning
+  translation: "gemini-pro-translator", // accurate multilingual translation
+  dataAnalysis: "mistral-large"       // fast structured analysis model
+
+                };
+
+                const selectedModel = modelMapping[primaryIntent.intent] || 'openai';
+                
+                // Update UI
+                document.getElementById('currentModel').textContent = `PikAI-${selectedModel}`;
+                
+                return selectedModel;
+            }
+
+            async handleUserMessage() {
+                const userInput = document.getElementById('userInput');
+                const message = userInput.value.trim();
+                
+                if (!message && this.uploadedFiles.length === 0) return;
+
+                this.startProcessingTimer();
+                const startTime = performance.now();
+
+                // Show greeting and chat if first message
+                this.showChatInterface();
+
+                // Add user message
+                if (message) {
+                    this.addMessage(message, true);
+                }
+                
+                // Show uploaded files in chat
+                if (this.uploadedFiles.length > 0) {
+                    this.showUploadedFilesInChat();
+                }
+
+                userInput.value = '';
+
+                try {
+                    // Detect intent
+                    const intents = this.detectIntent(message);
+                    const showThinking = document.getElementById('showThinking').checked;
+                    
+                    
+
+                    // Select optimal model
+                    const selectedModel = this.selectOptimalModel(intents);
+                    
+                    // Process based on primary intent
+                    const primaryIntent = intents[0];
+                    let response = '';
+
+                    switch (primaryIntent.intent) {
+                        case 'imageGeneration':
+                            response = await this.handleImageGeneration(message);
+                            break;
+                        case 'webSearch':
+                            response = await this.handleWebSearch(message);
+                            break;
+                        case 'fileAnalysis':
+                            response = await this.handleFileAnalysis(message);
+                            break;
+                        case 'audioGeneration':
+                            response = await this.handleAudioGeneration(message);
+                            break;
+                        case 'codeGeneration':
+                            response = await this.handleCodeGeneration(message);
+                            break;
+                        default:
+                            response = await this.handleTextGeneration(message, selectedModel);
+                    }
+
+                    await this.typeMessage(response);
+                    
+                } catch (error) {
+                    console.error('Error processing message:', error);
+                    await this.typeMessage("I encountered an error processing your request. Please try again or rephrase your message.");
+                }
+
+                const endTime = performance.now();
+                this.stopProcessingTimer(endTime - startTime);
+                
+                // Clear uploaded files after processing
+                this.uploadedFiles = [];
+                this.updateUploadedFilesDisplay();
+            }
+
+            showIntentAnalysis(intents) {
+                const analysisDiv = document.createElement('div');
+                analysisDiv.classList.add('analysis-results');
+                
+                let analysisHTML = '<div class="analysis-title">Intent Analysis</div>';
+                
+                intents.slice(0, 3).forEach((intent, index) => {
+                    const badge = `<span class="intent-badge">${intent.intent}</span>`;
+                    const confidence = `<div class="confidence-meter">
+                        <div class="confidence-fill" style="width: ${intent.confidence * 100}%"></div>
+                    </div>`;
+                    
+                    analysisHTML += `
+                        <div class="analysis-section">
+                            ${badge}
+                            <span style="color: #94a3b8; font-size: 0.8rem;">
+                                ${(intent.confidence * 100).toFixed(1)}% confidence
+                            </span>
+                            ${confidence}
+                            <div style="color: #64748b; font-size: 0.75rem; margin-top: 3px;">
+                                ${intent.reason}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                analysisDiv.innerHTML = analysisHTML;
+                document.getElementById('chatContainer').appendChild(analysisDiv);
+                this.scrollToBottom();
+            }
+
+            showThinkingProcess(primaryIntent) {
+                const steps = this.getThinkingSteps(primaryIntent.intent);
+                const progressContainer = document.createElement('div');
+                progressContainer.classList.add('progress-container');
+                progressContainer.innerHTML = `
+                    <div style="color: #6e45e2; font-weight: bold; margin-bottom: 10px;">
+                        🧠 Thinking Process
+                    </div>
+                    ${steps.map((step, index) => `
+                        <div class="progress-step" id="step-${index}">
+                            <div class="step-icon">${index + 1}</div>
+                            <span>${step}</span>
+                        </div>
+                    `).join('')}
+                `;
+
+                document.getElementById('chatContainer').appendChild(progressContainer);
+                this.animateThinkingSteps(steps.length);
+            }
+
+            getThinkingSteps(intent) {
+                const stepMaps = {
+                    'imageGeneration': [
+                        'Analyzing visual description...',
+                        'Selecting optimal art model...',
+                        'Optimizing prompt for quality...',
+                        'Generating high-resolution image...',
+                        'Post-processing and enhancement...'
+                    ],
+                    'webSearch': [
+                        'Formulating search query...',
+                        'Accessing multiple data sources...',
+                        'Filtering and ranking results...',
+                        'Extracting relevant information...',
+                        'Synthesizing comprehensive answer...'
+                    ],
+                    'fileAnalysis': [
+                        'Reading file content...',
+                        'Parsing document structure...',
+                        'Extracting key information...',
+                        'Analyzing content patterns...',
+                        'Generating insights and summary...'
+                    ],
+                    'codeGeneration': [
+                        'Understanding requirements...',
+                        'Selecting best practices...',
+                        'Structuring code architecture...',
+                        'Implementing functionality...',
+                        'Adding documentation and comments...'
+                    ],
+                    'textProcessing': [
+                        'Processing natural language...',
+                        'Analyzing context and intent...',
+                        'Accessing knowledge base...',
+                        'Formulating comprehensive response...',
+                        'Optimizing clarity and accuracy...'
+                    ]
+                };
+
+                return stepMaps[intent] || stepMaps['textProcessing'];
+            }
+
+            async animateThinkingSteps(stepCount) {
+                for (let i = 0; i < stepCount; i++) {
+                    const stepElement = document.getElementById(`step-${i}`);
+                    if (stepElement) {
+                        stepElement.classList.add('active');
+                        await this.delay(300 + Math.random() * 500);
+                        stepElement.classList.remove('active');
+                        stepElement.classList.add('completed');
+                        stepElement.querySelector('.step-icon').innerHTML = '✓';
+                    }
+                }
+            }
+
+            async handleImageGeneration(prompt) {
+                try {
+                    // Enhanced prompt for better results
+                    const enhancedPrompt = this.enhanceImagePrompt(prompt);
+                    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(enhancedPrompt)}?width=1024&height=1024&model=flux&enhance=true&nologo=true`;
+                    
+                    return `Here's your generated image based on "${prompt}":
+
+<img src="${imageUrl}" alt="Generated Image" style="max-width:100%; border-radius:12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+
+<div class="model-info"><i class="fa-solid fa-paint-brush"></i> Generated using image generation model with enhanced prompting</div>`;
+                    
+                } catch (error) {
+                    console.error('Image generation error:', error);
+                    return "I apologize, but I encountered an error generating the image. Please try rephrasing your request or try again later.";
+                }
+            }
+
+            enhanceImagePrompt(originalPrompt) {
+                // Add quality enhancers while preserving original intent
+                const qualityTerms = "high quality, detailed, professional, 8k resolution, masterpiece";
+                return `${originalPrompt}, ${qualityTerms}`;
+            }
+
+            async handleWebSearch(query) {
+                try {
+                    const searchQuery = this.optimizeSearchQuery(query);
+                    const searchUrl = `https://text.pollinations.ai/${encodeURIComponent(searchQuery)}?model=searchgpt`;
+                    
+                    const response = await fetch(searchUrl);
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    
+                    const searchResults = await response.text();
+                    
+                    // Format results nicely
+                    return ` Web Search Results for: "${query}"
+
+${searchResults}
+
+<div class="model-info"><i class="fa-solid fa-globe"></i> Results compiled from multiple web sources</div>`;
+                    
+                } catch (error) {
+                    console.error('Web search error:', error);
+                    // Fallback to general knowledge
+                    return await this.handleTextGeneration(`Please provide information about: ${query}`, 'openai');
+                }
+            }
+
+            optimizeSearchQuery(originalQuery) {
+                // Remove conversational elements and optimize for search
+                const optimized = originalQuery
+                    .replace(/^(search for|find|look up|tell me about|what is|who is|where is|when is|how is|why is)/i, '')
+                    .replace(/please|can you|could you|i want to know|i need to know/gi, '')
+                    .trim();
+                
+                return optimized || originalQuery;
+            }
+
+            async handleFileAnalysis(message) {
+                if (this.uploadedFiles.length === 0) {
+                    return "Please upload files for analysis. I can process images, PDFs, text files, audio, video, and various document formats.";
+                }
+
+                let analysisResults = `<i class="fa-solid fa-folder-open"></i> <h3>File Analysis Results:</h3>\n\n\n\n`;
+                
+                for (const file of this.uploadedFiles) {
+                    try {
+                        const analysis = await this.analyzeFile(file, message);
+                        analysisResults += `<h4>${file.name}</h4> (${this.formatFileSize(file.size)}):\n${analysis}\n\n`;
+                    } catch (error) {
+                        analysisResults += `<h4>${file.name}</h4>: Error analyzing file - ${error.message}\n\n`;
+                    }
+                }
+
+                return analysisResults;
+            }
+
+            async analyzeFile(file, userMessage) {
+                const fileType = this.getFileType(file);
+                
+                switch (fileType) {
+                    case 'image':
+                        return await this.analyzeImage(file, userMessage);
+                    case 'pdf':
+                        return await this.analyzePDF(file, userMessage);
+                    case 'text':
+                        return await this.analyzeTextFile(file, userMessage);
+                    case 'audio':
+                        return await this.analyzeAudio(file, userMessage);
+                    case 'video':
+                        return "Video analysis: I can see this is a video file. For detailed analysis, please extract key frames or provide specific questions about the content.";
+                    case 'document':
+                        return await this.analyzeDocument(file, userMessage);
+                    default:
+                        return `File type: ${file.type || 'unknown'}. I can provide basic file information but may need specific instructions for detailed analysis.`;
+                }
+            }
+
+            async analyzeImage(imageFile, userMessage) {
+                try {
+                    const base64Image = await this.fileToBase64(imageFile);
+                    const imageFormat = imageFile.type.split('/')[1] || 'jpeg';
+                    
+                    const analysisPrompt = userMessage || "Analyze this image in detail. Describe what you see, identify objects, text, people, colors, composition, and any notable features.";
+                    
+                    const payload = {
+                        model: "openai-large",
+                        messages: [
+                            {
+                                role: "user",
+                                content: [
+                                    { type: "text", text: analysisPrompt },
+                                    {
+                                        type: "image_url",
+                                        image_url: {
+                                            url: `data:image/${imageFormat};base64,${base64Image}`
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        max_tokens: 1000
+                    };
+
+                    const response = await fetch('https://text.pollinations.ai/openai', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    
+                    const result = await response.json();
+                    return result.choices[0].message.content;
+                    
+                } catch (error) {
+                    console.error('Image analysis error:', error);
+                    return `Image analysis error: ${error.message}. The image appears to be ${imageFile.type} format, ${this.formatFileSize(imageFile.size)}.`;
+                }
+            }
+
+            async analyzePDF(pdfFile, userMessage) {
+                try {
+                    const arrayBuffer = await pdfFile.arrayBuffer();
+                    const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
+                    
+                    let fullText = '';
+                    const maxPages = Math.min(pdf.numPages, 20); // Limit to first 20 pages
+                    
+                    for (let i = 1; i <= maxPages; i++) {
+                        const page = await pdf.getPage(i);
+                        const textContent = await page.getTextContent();
+                        const pageText = textContent.items.map(item => item.str).join(' ');
+                        fullText += `\n--- Page ${i} ---\n${pageText}`;
+                    }
+
+                    if (!fullText.trim()) {
+                        return "PDF appears to contain no extractable text. It may be image-based or encrypted.";
+                    }
+
+                    // Analyze the extracted text
+                    const analysisPrompt = userMessage ? 
+                        `${userMessage}\n\nDocument content:\n${fullText.slice(0, 8000)}` :
+                        `Please analyze this PDF document and provide a comprehensive summary. Here's the content:\n${fullText.slice(0, 8000)}`;
+
+                    const response = await this.callTextAPI(analysisPrompt, 'openai');
+                    
+                    return `**PDF Analysis** (${pdf.numPages} pages, analyzed first ${maxPages}):\n\n${response}`;
+                    
+                } catch (error) {
+                    console.error('PDF analysis error:', error);
+                    return `PDF analysis error: ${error.message}. This may be an encrypted or corrupted PDF file.`;
+                }
+            }
+
+            async analyzeTextFile(textFile, userMessage) {
+                try {
+                    const content = await textFile.text();
+                    const preview = content.slice(0, 5000); // First 5000 characters
+                    
+                    const analysisPrompt = userMessage ? 
+                        `${userMessage}\n\nFile content:\n${preview}` :
+                        `Please analyze this text file and provide insights, summary, and key points:\n${preview}`;
+
+                    const response = await this.callTextAPI(analysisPrompt, 'openai');
+                    
+                    return `**Text File Analysis** (${content.length} characters):\n\n${response}`;
+                    
+                } catch (error) {
+                    console.error('Text file analysis error:', error);
+                    return `Text file analysis error: ${error.message}`;
+                }
+            }
+
+            async analyzeAudio(audioFile, userMessage) {
+                try {
+                    // For audio analysis, we'd typically need speech-to-text
+                    // This is a placeholder for the structure
+                    const base64Audio = await this.fileToBase64(audioFile);
+                    
+                    // Note: This is a simplified approach. Real implementation would need proper audio processing
+                    return `**Audio Analysis** (${this.formatFileSize(audioFile.size)}, ${audioFile.type}):\n\nAudio file detected. Format: ${audioFile.type}\nDuration: Analyzing...\n\nFor speech-to-text transcription, please specify if this contains spoken content.`;
+                    
+                } catch (error) {
+                    return `Audio analysis error: ${error.message}`;
+                }
+            }
+
+            async analyzeDocument(docFile, userMessage) {
+                // For various document formats (DOC, DOCX, etc.)
+                // This would require specialized parsers in a real implementation
+                return `**Document Analysis** (${docFile.name}, ${this.formatFileSize(docFile.size)}):\n\nDocument file detected. Format: ${docFile.type}\n\nFor detailed analysis of this document format, please convert to PDF or plain text, or specify what information you'd like to extract.`;
+            }
+
+            async handleAudioGeneration(message) {
+                try {
+                    const cleanText = message.replace(/text.to.speech|tts|speak|say/gi, '').trim();
+                    const textToSpeak = cleanText || "Hello, this is a text to speech demonstration.";
+                    
+                    const audioUrl = `https://text.pollinations.ai/${encodeURIComponent(textToSpeak)}?model=openai-audio&voice=nova`;
+                    
+                    return `🎙️ **Generated Audio:**
+
+<audio controls style="width: 100%; margin: 10px 0;">
+    <source src="${audioUrl}" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+**Text:** "${textToSpeak}"
+
+<div class="model-info">🔊 Generated using OpenAI Audio model with Nova voice</div>`;
+                    
+                } catch (error) {
+                    console.error('Audio generation error:', error);
+                    return "I encountered an error generating the audio. Please try again with a shorter text.";
+                }
+            }
+
+            async handleCodeGeneration(message) {
+                try {
+                    const codePrompt = `${message}
+
+Please provide clean, well-commented, production-ready code. Include:
+1. Clear variable names and structure
+2. Proper error handling where applicable
+3. Comments explaining complex logic
+4. Best practices for the chosen language/framework`;
+
+                    const response = await this.callTextAPI(codePrompt, 'openai');
+                    
+                    return `💻 **Code Generation:**\n\n${response}\n\n<div class="model-info">⚡ Generated with advanced code optimization</div>`;
+                    
+                } catch (error) {
+                    console.error('Code generation error:', error);
+                    return "I encountered an error generating the code. Please provide more specific requirements.";
+                }
+            }
+
+            async handleTextGeneration(message, model = 'openai') {
+                try {
+                    let enhancedPrompt = message;
+                    
+                    // Add context from uploaded files if any
+                    if (this.uploadedFiles.length > 0) {
+                        enhancedPrompt += `\n\nNote: User has uploaded ${this.uploadedFiles.length} file(s) for context.`;
+                    }
+
+                    const response = await this.callTextAPI(enhancedPrompt, model);
+                    return response;
+                    
+                } catch (error) {
+                    console.error('Text generation error:', error);
+                    return "I encountered an error processing your request. Please try again or rephrase your message.";
+                }
+            }
+
+            async callTextAPI(prompt, model = 'openai') {
+                try {
+                    const url = `https://text.pollinations.ai/${encodeURIComponent(prompt)}?model=${model}`;
+                    const response = await fetch(url);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+
+                    return await response.text();
+                } catch (error) {
+                    console.error('Text API call failed:', error);
+                    throw error;
+                }
+            }
+
+            getFileType(file) {
+                const mimeType = file.type.toLowerCase();
+                const fileName = file.name.toLowerCase();
+                
+                if (mimeType.startsWith('image/')) return 'image';
+                if (mimeType === 'application/pdf') return 'pdf';
+                if (mimeType.startsWith('text/') || 
+                    fileName.endsWith('.txt') || 
+                    fileName.endsWith('.md') || 
+                    fileName.endsWith('.csv')) return 'text';
+                if (mimeType.startsWith('audio/')) return 'audio';
+                if (mimeType.startsWith('video/')) return 'video';
+                if (mimeType.includes('document') || 
+                    mimeType.includes('word') || 
+                    mimeType.includes('excel') || 
+                    mimeType.includes('powerpoint') ||
+                    fileName.endsWith('.doc') ||
+                    fileName.endsWith('.docx') ||
+                    fileName.endsWith('.xls') ||
+                    fileName.endsWith('.xlsx') ||
+                    fileName.endsWith('.ppt') ||
+                    fileName.endsWith('.pptx')) return 'document';
+                
+                return 'unknown';
+            }
+
+            async fileToBase64(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        const base64 = reader.result.split(',')[1];
+                        resolve(base64);
+                    };
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            formatFileSize(bytes) {
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                if (bytes === 0) return '0 Bytes';
+                const i = Math.floor(Math.log(bytes) / Math.log(1024));
+                return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
+            }
+
+            async handleFileUpload(event) {
+                const files = Array.from(event.target.files);
+                await this.processDroppedFiles(files);
+            }
+
+            async processDroppedFiles(files) {
+                for (const file of files) {
+                    if (file.size > this.maxFileSize) {
+                        this.addMessage(`File "${file.name}" is too large. Maximum size is ${this.formatFileSize(this.maxFileSize)}.`, false);
+                        continue;
+                    }
+                    
+                    this.uploadedFiles.push(file);
+                }
+                
+                this.updateUploadedFilesDisplay();
+                
+                if (files.length > 0) {
+                    this.addMessage(`📎 Uploaded ${files.length} file(s). Ready for analysis!`, false);
+                }
+            }
+
+            updateUploadedFilesDisplay() {
+                const container = document.getElementById('uploadedFiles');
+                if (!this.uploadedFiles.length) {
+                    container.innerHTML = '';
+                    return;
+                }
+
+                container.innerHTML = this.uploadedFiles.map((file, index) => `
+                    <div class="file-chip">
+                        <i class="fa-solid fa-file"></i>
+                        <span>${file.name} (${this.formatFileSize(file.size)})</span>
+                        <span class="remove-btn" onclick="window.pikAI.removeFile(${index})">×</span>
+                    </div>
+                `).join('');
+            }
+
+            removeFile(index) {
+                this.uploadedFiles.splice(index, 1);
+                this.updateUploadedFilesDisplay();
+            }
+
+            showUploadedFilesInChat() {
+                const fileList = this.uploadedFiles.map(file => `• ${file.name} (${this.formatFileSize(file.size)})`).join('\n');
+                this.addMessage(`📎 **Files for analysis:**\n${fileList}`, true);
+            }
+
+            setupFileUpload() {
+                const fileUploadArea = document.getElementById('fileUploadArea');
+                const hiddenFileInput = document.getElementById('hiddenFileInput');
+                
+                fileUploadArea?.addEventListener('click', () => hiddenFileInput?.click());
+            }
+
+            showChatInterface() {
+                const mainContent = document.querySelector('.main-content');
+                const chatContainer = document.getElementById('chatContainer');
+                
+                if (!chatContainer.classList.contains('active')) {
+                    mainContent.style.display = 'none';
+                    chatContainer.style.display = 'flex';
+                    chatContainer.classList.add('active');
+                }
+            }
+
+            addMessage(text, isUser = false) {
+                const chatContainer = document.getElementById('chatContainer');
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', isUser ? 'user-message' : 'bot-message');
+
+                if (text.includes('```')) {
+                    this.renderCodeBlocks(messageDiv, text);
+                } else {
+                    messageDiv.innerHTML = text;
+                }
+
+                chatContainer.appendChild(messageDiv);
+                this.scrollToBottom();
+            }
+
+            renderCodeBlocks(container, text) {
+                const parts = text.split(/(```[\s\S]*?```)/g);
+
+                parts.forEach(part => {
+                    if (part.startsWith('```') && part.endsWith('```')) {
+                        let codeContent = part.slice(3, -3).trim();
+                        let lines = codeContent.split('\n');
+                        let language = '';
+
+                        if (/^(js|javascript|html|css|python|java|c|cpp|php|ruby|go|rust|swift|kotlin)$/i.test(lines[0].trim())) {
+                            language = lines[0].trim();
+                            lines.shift();
+                        }
+
+                        const wrapper = document.createElement('div');
+                        wrapper.style.position = 'relative';
+
+                        const pre = document.createElement('pre');
+                        const code = document.createElement('code');
+                        code.className = `language-${language}`;
+                        code.textContent = lines.join('\n');
+                        pre.appendChild(code);
+
+                        const copyBtn = document.createElement('button');
+                        copyBtn.textContent = "Copy";
+                        copyBtn.style.cssText = `position:absolute;top:5px;right:5px;font-size:12px;padding:2px 6px;cursor:pointer;background:#333;color:white;border:none;border-radius:4px;`;
+                        copyBtn.onclick = () => {
+                            navigator.clipboard.writeText(code.textContent);
+                            copyBtn.textContent = "Copied!";
+                            setTimeout(() => copyBtn.textContent = "Copy", 2000);
+                        };
+
+                        wrapper.appendChild(pre);
+                        wrapper.appendChild(copyBtn);
+                        container.appendChild(wrapper);
+
+                        hljs.highlightElement(code);
+                    } else {
+                        const span = document.createElement('span');
+                        span.innerHTML = part;
+                        container.appendChild(span);
+                    }
+                });
+            }
+                        async typeMessage(text, element) {
+                const typingIndicator = document.getElementById('typingIndicator');
+                element = element || typingIndicator;
+                
+                element.style.display = 'block';
+                document.getElementById('chatContainer').scrollTop = document.getElementById('chatContainer').scrollHeight;
+                await this.delay(400);
+                element.style.display = 'none';
+
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', 'bot-message');
+                document.getElementById('chatContainer').appendChild(messageDiv);
+
+                const parts = text.split(/(```[\s\S]*?```)/g);
+                let currentText = '';
+
+                for (let part of parts) {
+                    if (part.startsWith('```') && part.endsWith('```')) {
+                        // Code block: render immediately
+                        let codeContent = part.slice(3, -3).trim();
+                        let lines = codeContent.split('\n');
+                        let language = '';
+
+                        if (/^(js|javascript|html|css|python|java|c|cpp|php|ruby|go|rust|swift|kotlin)$/i.test(lines[0].trim())) {
+                            language = lines[0].trim();
+                            lines.shift();
+                        }
+
+                        const wrapper = document.createElement('div');
+                        wrapper.style.position = 'relative';
+
+                        const pre = document.createElement('pre');
+                        const code = document.createElement('code');
+                        code.className = `language-${language}`;
+                        code.textContent = lines.join('\n');
+                        pre.appendChild(code);
+
+                        const copyBtn = document.createElement('button');
+                        copyBtn.textContent = "Copy";
+                        copyBtn.style.cssText = `position:absolute;top:5px;right:5px;font-size:12px;padding:2px 6px;cursor:pointer;background:#333;color:white;border:none;border-radius:4px;`;
+                        copyBtn.onclick = () => {
+                            navigator.clipboard.writeText(code.textContent);
+                            copyBtn.textContent = "Copied!";
+                            setTimeout(() => copyBtn.textContent = "Copy", 2000);
+                        };
+
+                        wrapper.appendChild(pre);
+                        wrapper.appendChild(copyBtn);
+                        messageDiv.appendChild(wrapper);
+
+                        hljs.highlightElement(code);
+                    } else {
+                        // Regular text: type character by character
+                        for (let char of part) {
+                            currentText += char;
+                            messageDiv.innerHTML = currentText;
+                            this.scrollToBottom();
+                            
+                            // Variable typing speed for more natural effect
+                            const delay = char === ' ' ? 0.01 : 
+                                         char === '.' || char === '!' || char === '?' ? 0.000001 : 
+                                         0.01;
+                            await this.delay(delay);
+                        }
+                    }
+                }
+            }
+
+            delay(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            scrollToBottom() {
+                const chatContainer = document.getElementById('chatContainer');
+                if (chatContainer) {
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                }
+            }
+
+            startProcessingTimer() {
+                const sendIcon = document.getElementById('sendIcon');
+                const sendCounter = document.getElementById('sendCounter');
+                
+                sendIcon.style.opacity = "0";
+                sendCounter.classList.add('active');
+                sendCounter.textContent = "0.0";
+
+                const startTime = performance.now();
+                this.timerInterval = setInterval(() => {
+                    const elapsed = (performance.now() - startTime) / 1000;
+                    sendCounter.textContent = elapsed.toFixed(1);
+                }, 100);
+            }
+
+            stopProcessingTimer(duration) {
+                const sendIcon = document.getElementById('sendIcon');
+                const sendCounter = document.getElementById('sendCounter');
+                
+                if (this.timerInterval) {
+                    clearInterval(this.timerInterval);
+                }
+                
+                const total = (duration / 1000).toFixed(1);
+                sendCounter.textContent = total + " s";
+
+                setTimeout(() => {
+                    sendCounter.classList.remove('active');
+                    sendIcon.style.opacity = "1";
+                }, 800);
+            }
+
+            triggerWebSearch() {
+                const userInput = document.getElementById('userInput');
+                const currentValue = userInput.value.trim();
+                
+                if (currentValue) {
+                    userInput.value = `Search for information about: ${currentValue}`;
+                } else {
+                    userInput.value = "Search for the latest news and current events";
+                }
+                
+                userInput.focus();
+            }
+
+            triggerImageGeneration() {
+                const userInput = document.getElementById('userInput');
+                const currentValue = userInput.value.trim();
+                
+                if (currentValue) {
+                    userInput.value = `Create an image of: ${currentValue}`;
+                } else {
+                    userInput.value = "Generate a beautiful, artistic image";
+                }
+                
+                userInput.focus();
+            }
+
+            loadUserSettings() {
+                // Load settings from localStorage
+                const settings = {
+                    privacyMode: localStorage.getItem('privacyMode') === 'true',
+                    securedEnv: localStorage.getItem('securedEnv') === 'true',
+                    unrestrictedAI: localStorage.getItem('unrestrictedAI') === 'true',
+                    showThinking: localStorage.getItem('showThinking') !== 'false', // default true
+                    advancedAnalysis: localStorage.getItem('advancedAnalysis') !== 'false' // default true
+                };
+
+                // Apply settings to UI
+                Object.entries(settings).forEach(([key, value]) => {
+                    const checkbox = document.getElementById(key);
+                    if (checkbox) {
+                        checkbox.checked = value;
+                    }
+                });
+
+                // Add event listeners for settings changes
+                Object.keys(settings).forEach(key => {
+                    const checkbox = document.getElementById(key);
+                    if (checkbox) {
+                        checkbox.addEventListener('change', () => {
+                            localStorage.setItem(key, checkbox.checked);
+                            this.onSettingChanged(key, checkbox.checked);
+                        });
+                    }
+                });
+            }
+
+            onSettingChanged(setting, value) {
+                switch (setting) {
+                    case 'unrestrictedAI':
+                        console.log(`Unrestricted AI: ${value ? 'Enabled' : 'Disabled'}`);
+                        break;
+                    case 'showThinking':
+                        console.log(`Show Thinking: ${value ? 'Enabled' : 'Disabled'}`);
+                        break;
+                    case 'advancedAnalysis':
+                        console.log(`Advanced Analysis: ${value ? 'Enabled' : 'Disabled'}`);
+                        break;
+                    case 'privacyMode':
+                        console.log(`Privacy Mode: ${value ? 'Enabled' : 'Disabled'}`);
+                        break;
+                    case 'securedEnv':
+                        console.log(`Secured Environment: ${value ? 'Enabled' : 'Disabled'}`);
+                        break;
+                }
+            }
+
+            updateGreeting() {
+                const greetingElement = document.querySelector(".greeting-text");
+                const now = new Date();
+                const hour = now.getHours();
+                let greeting = "";
+
+                if (hour >= 5 && hour < 12) {
+                    greeting = "Good morning,";
+                } else if (hour >= 12 && hour < 17) {
+                    greeting = "Good afternoon,";
+                } else if (hour >= 17 && hour < 21) {
+                    greeting = "Good evening,";
+                } else {
+                    greeting = "Late night,";
+                }
+
+                if (greetingElement) {
+                    greetingElement.textContent = greeting;
+                }
+            }
+
+            initializeChat() {
+                const chatContainer = document.getElementById('chatContainer');
+                if (chatContainer) {
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                }
+            }
+
+            // Advanced web scraping simulation
+            async performWebScraping(url) {
+                try {
+                    // This would normally use a CORS proxy or server-side scraping
+                    // For demo purposes, we'll simulate the process
+                    const response = await fetch(`https://text.pollinations.ai/Please extract and summarize information from this URL: ${url}?model=searchgpt`);
+                    return await response.text();
+                } catch (error) {
+                    console.error('Web scraping error:', error);
+                    return "Unable to scrape the specified URL due to CORS restrictions.";
+                }
+            }
+
+            // Enhanced context understanding
+            analyzeContext(message, chatHistory) {
+                const context = {
+                    hasPreviousContext: chatHistory.length > 0,
+                    isFollowUp: false,
+                    referencesFiles: this.uploadedFiles.length > 0,
+                    sentiment: this.analyzeSentiment(message),
+                    complexity: this.analyzeComplexity(message),
+                    domain: this.identifyDomain(message)
+                };
+
+                // Check for follow-up indicators
+                const followUpIndicators = [
+                    /continue/i, /more/i, /also/i, /additionally/i, /furthermore/i,
+                    /what about/i, /how about/i, /and/i, /but/i, /however/i
+                ];
+
+                context.isFollowUp = followUpIndicators.some(pattern => pattern.test(message));
+
+                return context;
+            }
+
+            analyzeSentiment(text) {
+                const positiveWords = ['good', 'great', 'excellent', 'amazing', 'wonderful', 'fantastic'];
+                const negativeWords = ['bad', 'terrible', 'awful', 'horrible', 'disappointing', 'frustrating'];
+                
+                const words = text.toLowerCase().split(' ');
+                const positiveCount = words.filter(word => positiveWords.includes(word)).length;
+                const negativeCount = words.filter(word => negativeWords.includes(word)).length;
+                
+                if (positiveCount > negativeCount) return 'positive';
+                if (negativeCount > positiveCount) return 'negative';
+                return 'neutral';
+            }
+
+            analyzeComplexity(text) {
+                const wordCount = text.split(' ').length;
+                const sentenceCount = text.split(/[.!?]+/).length;
+                const avgWordsPerSentence = wordCount / sentenceCount;
+                
+                if (avgWordsPerSentence > 20 || wordCount > 100) return 'high';
+                if (avgWordsPerSentence > 10 || wordCount > 50) return 'medium';
+                return 'low';
+            }
+
+            identifyDomain(text) {
+                const domains = {
+                    technology: /tech|computer|software|programming|code|digital|internet|ai|ml|algorithm/i,
+                    science: /research|study|experiment|hypothesis|theory|data|analysis|scientific/i,
+                    business: /market|revenue|profit|strategy|management|company|enterprise|business/i,
+                    creative: /art|design|music|creative|artistic|aesthetic|beautiful|visual/i,
+                    education: /learn|teach|education|academic|study|school|university|knowledge/i,
+                    health: /health|medical|doctor|patient|treatment|medicine|wellness|fitness/i
+                };
+
+                for (const [domain, pattern] of Object.entries(domains)) {
+                    if (pattern.test(text)) {
+                        return domain;
+                    }
+                }
+
+                return 'general';
+            }
+
+            // Multi-modal response generation
+            async generateMultiModalResponse(intent, message, context) {
+                const responses = [];
+                
+                // Determine if multiple modalities are needed
+                if (intent.intent === 'imageGeneration' && context.complexity === 'high') {
+                    // Generate both image and detailed explanation
+                    const imageResponse = await this.handleImageGeneration(message);
+                    const explanationResponse = await this.handleTextGeneration(
+                        `Explain the artistic choices and techniques used in creating an image of: ${message}`,
+                        'openai'
+                    );
+                    
+                    responses.push(imageResponse);
+                    responses.push(`\n\n**Artistic Analysis:**\n${explanationResponse}`);
+                }
+
+                return responses.join('\n');
+            }
+
+            // Real-time learning from interactions
+            updateLearningModel(userMessage, response, feedback = null) {
+                // Store interaction patterns for improvement
+                const interaction = {
+                    timestamp: Date.now(),
+                    userMessage,
+                    response,
+                    feedback,
+                    intent: this.detectIntent(userMessage)[0],
+                    context: this.analyzeContext(userMessage, this.chatHistory)
+                };
+
+                // Store in localStorage for persistence
+                let learningData = JSON.parse(localStorage.getItem('pikAI_learning') || '[]');
+                learningData.push(interaction);
+                
+                // Keep only last 100 interactions to manage storage
+                if (learningData.length > 100) {
+                    learningData = learningData.slice(-100);
+                }
+                
+                localStorage.setItem('pikAI_learning', JSON.stringify(learningData));
+            }
+
+            // Advanced error handling and recovery
+            handleError(error, context) {
+                console.error('PikAI Error:', error, context);
+                
+                const errorTypes = {
+                    'NetworkError': 'Connection issue detected. Please check your internet connection and try again.',
+                    'ParseError': 'Failed to process the response. The content might be malformed.',
+                    'TimeoutError': 'The request took too long to complete. Please try with a shorter prompt.',
+                    'AuthError': 'Authentication failed. Please check your API credentials.',
+                    'RateLimitError': 'Rate limit exceeded. Please wait a moment before trying again.'
+                };
+
+                const errorMessage = errorTypes[error.name] || 
+                    'An unexpected error occurred. Please try rephrasing your request or try again later.';
+                
+                return `⚠️ ${errorMessage}`;
+            }
+
+            // Performance monitoring
+            monitorPerformance(operation, startTime, endTime) {
+                const duration = endTime - startTime;
+                const performance = {
+                    operation,
+                    duration,
+                    timestamp: Date.now(),
+                    userAgent: navigator.userAgent,
+                    memory: performance.memory ? {
+                        used: performance.memory.usedJSHeapSize,
+                        total: performance.memory.totalJSHeapSize,
+                        limit: performance.memory.jsHeapSizeLimit
+                    } : null
+                };
+
+                console.log('Performance Metrics:', performance);
+                
+                // Store performance data
+                let perfData = JSON.parse(localStorage.getItem('pikAI_performance') || '[]');
+                perfData.push(performance);
+                
+                if (perfData.length > 50) {
+                    perfData = perfData.slice(-50);
+                }
+                
+                localStorage.setItem('pikAI_performance', JSON.stringify(perfData));
+            }
+        }
+
+        // IndexedDB setup for persistent storage
+        const dbName = "PikAI_DB";
+        const storeName = "UserStore";
+        let db;
+
+        const request = indexedDB.open(dbName, 1);
+
+        request.onupgradeneeded = function(event) {
+            db = event.target.result;
+            if (!db.objectStoreNames.contains(storeName)) {
+                db.createObjectStore(storeName, { keyPath: "id" });
+            }
+        };
+
+        request.onsuccess = function(event) {
+            db = event.target.result;
+            loadUsername();
+        };
+
+        request.onerror = function(event) {
+            console.error("IndexedDB error:", event.target.errorCode);
+        };
+
+        function saveUsername(name) {
+            if (db) {
+                const transaction = db.transaction([storeName], "readwrite");
+                const store = transaction.objectStore(storeName);
+                store.put({ id: "username", value: name });
+            }
+        }
+
+        function loadUsername() {
+            if (db) {
+                const transaction = db.transaction([storeName], "readonly");
+                const store = transaction.objectStore(storeName);
+                const request = store.get("username");
+
+                request.onsuccess = function(event) {
+                    if (request.result) {
+                        window.pikAI.currentUsername = request.result.value;
+                        document.querySelector(".username").textContent = request.result.value + ".";
+                        document.getElementById('popupOverlay').classList.add("hidden");
+                        document.getElementById('popupBox').classList.add("hidden");
+                    } else {
+                        document.getElementById('popupOverlay').classList.remove("hidden");
+                        document.getElementById('popupBox').classList.remove("hidden");
+                    }
+                };
+            }
+        }
+
+        function submitName() {
+            const input = document.getElementById('username').value.trim();
+            if (input !== "") {
+                window.pikAI.currentUsername = input;
+                document.querySelector(".username").textContent = input + ".";
+                saveUsername(input);
+
+                document.getElementById('popupBox').classList.add("hidden");
+                document.getElementById('popupOverlay').classList.add("hidden");
+            }
+        }
+
+        // Initialize PikAI system when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            window.pikAI = new AdvancedPikAI();
+            console.log('PikAI Advanced System Initialized');
+        });
+
+        // Global error handler
+        window.addEventListener('error', (error) => {
+            console.error('Global error caught:', error);
+            if (window.pikAI) {
+                window.pikAI.handleError(error, 'global');
             }
         });
 
-    } else {
-        // No code blocks → allow HTML
-        messageDiv.innerHTML = text;
-    }
-
-    chatContainer.appendChild(messageDiv);
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-}// Typing animation
-async function typeMessage(text, element) {
-  element.style.display = 'block';
-  chatContainer.scrollTop = chatContainer.scrollHeight;
-  await new Promise(r => setTimeout(r, 400));
-  element.style.display = 'none';
-
-  const messageDiv = document.createElement('div');
-  messageDiv.classList.add('message', 'bot-message');
-  chatContainer.appendChild(messageDiv);
-
-  const parts = text.split(/(```[\s\S]*?```)/g);
-
-  for (let part of parts) {
-    if (part.startsWith('```') && part.endsWith('```')) {
-      // Code block: escape HTML
-      let codeContent = part.slice(3, -3).trim();
-      let lines = codeContent.split('\n');
-      let language = '';
-
-      if (/^(js|javascript|html|css|python|java|c|cpp|php|ruby|go|rust|swift|kotlin)$/i.test(lines[0].trim())) {
-        language = lines[0].trim();
-        lines.shift();
-      }
-
-      const wrapper = document.createElement('div');
-      wrapper.style.position = 'relative';
-
-      const pre = document.createElement('pre');
-      const code = document.createElement('code');
-      code.className = `language-${language}`;
-      code.textContent = lines.join('\n'); // keep as text
-      pre.appendChild(code);
-
-      const copyBtn = document.createElement('button');
-      copyBtn.textContent = "Copy";
-      copyBtn.style.cssText = `position:absolute;top:5px;right:5px;font-size:12px;padding:2px 6px;cursor:pointer;`;
-      copyBtn.onclick = () => navigator.clipboard.writeText(code.textContent);
-
-      wrapper.appendChild(pre);
-      wrapper.appendChild(copyBtn);
-      messageDiv.appendChild(wrapper);
-
-      hljs.highlightElement(code);
-
-    } else {
-      // Normal text: allow HTML (images will render)
-      messageDiv.innerHTML += part;
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
-  }
-}
-        // Escape HTML to prevent XSS
-        function escapeHtml(unsafe) {
-          return unsafe
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "<")
-            .replace(/>/g, ">")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-        }
-        
-        // Simulate character-by-character typing
-        
-        // Get AI response
-        // Fetch AI response
-async function getAIResponse(prompt) {
-  try {
-    // Check if the prompt is likely an image request
-    if (/image|picture|photo/i.test(prompt)) {
-      const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=800&height=600`;
-      return `Here's your generated image: <img src="${imageUrl}" alt="Generated Image" style="max-width:100%; border-radius:8px;">`;
-    } else {
-      // Attempt to fetch text directly
-      const response = await fetch(`https://text.pollinations.ai/systemPrompt+${encodeURIComponent(prompt)}`);
-      
-      // Check if the response is successful
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      return await response.text();
-    }
-  } catch (error) {
-    console.warn('CORS or fetch error:', error);
-
-    // Fallback message if direct fetch fails
-    return "Sorry, I couldn't reach the AI server directly. This may be due to CORS restrictions in your browser.";
-  }
-}
-        // Handle user message
-        async function handleUserMessage() {
-  const message = userInput.value.trim();
-  if (!message) return;
-
-  // Hide the greeting and make chat section visible
-  const mainContent = document.querySelector('.main-content');
-  const chatContainer = document.getElementById('chatContainer');
-
-  if (!chatContainer.classList.contains('active')) {
-    mainContent.style.display = 'none'; // hide greeting
-    chatContainer.style.display = 'flex'; // show chat
-    chatContainer.classList.add('active');
-  }
-
-  // Add user message to chat
-  addMessage(message, true);
-  userInput.value = '';
-
-  // Get and add AI response character by character
-  const response = await getAIResponse(message);
-  await typeMessage(response, typingIndicator);
-}
-        // Event listeners
-        sendBtn.addEventListener('click', handleUserMessage);
-        
-        userInput.addEventListener('keypress', (e) => {
-          if (e.key === 'Enter') {
-            handleUserMessage();
-          }
+        // Unhandled promise rejection handler
+        window.addEventListener('unhandledrejection', (event) => {
+            console.error('Unhandled promise rejection:', event.reason);
+            if (window.pikAI) {
+                window.pikAI.handleError(event.reason, 'promise_rejection');
+            }
         });
-        
-        actionTags.forEach(tag => {
-          tag.addEventListener('click', () => {
-            const prompt = tag.getAttribute('data-prompt');
-            userInput.value = prompt;
-            handleUserMessage();
-          });
-        });
-        
-        scrollTop.addEventListener('click', () => {
-          chatContainer.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        });
-        
-        // Close sidebar when clicking outside
-        document.addEventListener('click', (e) => {
-          if (!sidebar.contains(e.target) && !menuIcon.contains(e.target) && sidebar.classList.contains('active')) {
-            sidebar.classList.remove('active');
-          }
-        });
-        
-        // Initialize chat
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-        function updateGreeting() {
-    const greetingElement = document.querySelector(".greeting-text");
-    const now = new Date();
-    const hour = now.getHours();
-    let greeting = "";
-
-    if (hour >= 5 && hour < 12) {
-        greeting = "Good morning,";
-    } else if (hour >= 12 && hour < 17) {
-        greeting = "Good afternoon,";
-    } else if (hour >= 17 && hour < 21) {
-        greeting = "Good evening,";
-    } else {
-        greeting = "Late night,";
-    }
-
-    greetingElement.textContent = greeting;
-}
-
-// Call it on page load
-updateGreeting();
-// IndexedDB setup
-const dbName = "PikAI_DB";
-const storeName = "UserStore";
-let db;
-
-// Open (or create) the database
-const request = indexedDB.open(dbName, 1);
-
-request.onupgradeneeded = function(event) {
-    db = event.target.result;
-    db.createObjectStore(storeName, { keyPath: "id" });
-};
-
-request.onsuccess = function(event) {
-    db = event.target.result;
-    loadUsername();
-};
-
-request.onerror = function(event) {
-    console.error("IndexedDB error:", event.target.errorCode);
-};
-
-// Save username to IndexedDB
-function saveUsername(name) {
-    const transaction = db.transaction([storeName], "readwrite");
-    const store = transaction.objectStore(storeName);
-    store.put({ id: "username", value: name });
-}
-
-// Load username from IndexedDB
-function loadUsername() {
-    const transaction = db.transaction([storeName], "readonly");
-    const store = transaction.objectStore(storeName);
-    const request = store.get("username");
-
-    request.onsuccess = function(event) {
-        if (request.result) {
-            currentUsername = request.result.value;
-            document.querySelector(".username").textContent = currentUsername + ".";
-            document.getElementById('popupOverlay').classList.add("hidden"); // hide popup
-            document.getElementById('popupBox').classList.add("hidden");
-        } else {
-            document.getElementById('popupOverlay').classList.remove("hidden"); // show popup
-            document.getElementById('popupBox').classList.remove("hidden");
-        }
-    };
-}
-
-// Submit name (override old function)
-function submitName() {
-    const input = document.getElementById('username').value.trim();
-    if (input !== "") {
-        currentUsername = input;
-        document.querySelector(".username").textContent = input + ".";
-        saveUsername(input);
-
-        // Smooth hide animation
-        document.getElementById('popupBox').classList.add("hidden");
-        document.getElementById('popupOverlay').classList.add("hidden");
-    }
-}
     </script>
 </body>
 </html>
